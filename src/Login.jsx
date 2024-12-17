@@ -1,13 +1,18 @@
 import "./Login.css";
 
 import axios from "axios";
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { useNavigate } from "react-router-dom";
 
 import cassette from "./icons/cassette.png";
+import { UserContext } from "./App";
 
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  const navigate = useNavigate();
+  const userContext = useContext(UserContext);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -17,6 +22,8 @@ function Login() {
         password,
       });
       if (response) {
+        userContext.setUser(response.data);
+        navigate("/home");
       }
     } catch (error) {
       console.error(error);
