@@ -1,0 +1,54 @@
+.login-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.login-container > h1 {
+    margin: 0;
+}
+
+.login-form > h2 {
+    margin: 0;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    height: fit-content;
+    gap: 2vh;
+    padding: 2vh;
+}
+
+.login-form > input {
+    height: 3vh;
+    width: 20vw;
+    font-family: "Tiny5", serif;
+}
+
+.login-form > button {
+    background-color: green;
+    border-radius: 5px;
+    width: 20vw;
+    height: 4vh;
+    border: none;
+    font-family: "Tiny5", serif;
+}
+
+.login-form > button:hover {
+    cursor: pointer;
+    background-color: dodgerblue;
+}
+
+footer {
+    justify-self: center;
+}
+
+.cassette-icon {
+    width: 10vw;
+}
