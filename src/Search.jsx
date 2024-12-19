@@ -15,8 +15,8 @@ function Search() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("http://localhost:3000/search", {
-        search,
+      const response = await axios.get("http://localhost:3000/search", {
+        params: { search },
       });
       setResult(true);
       setAlbums(response.data.albums);
@@ -35,7 +35,10 @@ function Search() {
   const handleTrack = async (e, trackID) => {
     e.preventDefault();
     try {
-      const response = await axios.post("http://localhost:3000/", { trackID });
+      const response = await axios.get("http://localhost:3000/search/track", {
+        params: { trackID },
+      });
+      console.log(response.data);
     } catch (error) {
       console.error(error);
     }
