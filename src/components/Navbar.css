@@ -1,0 +1,26 @@
+.navbar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #2B2B2B;
+}
+
+.navbar > a {
+    text-decoration: none;
+    color: white;
+    font-size: 0.9rem;
+}
+
+.navbar-icon {
+    width: 5vw;
+    display: block;
+    filter: brightness(0) invert(1);
+}
+
+footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}

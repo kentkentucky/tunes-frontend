@@ -5,6 +5,7 @@ import { useState, createContext } from "react";
 
 import Login from "./Login";
 import Home from "./Home";
+import Search from "./Search";
 
 export const UserContext = createContext();
 
@@ -17,6 +18,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Login />} />
           <Route path="/home" element={<Home />} />
+          <Route path="/search" element={<Search />} />
         </Routes>
       </BrowserRouter>
     </UserContext.Provider>

@@ -43,7 +43,7 @@ function Login() {
       <div className="login-container">
         <h1>Tunes</h1>
         <img src={cassette} className="cassette-icon" />
-        <form className="login-form" method="post" onSubmit={handleSubmit}>
+        <form className="login-form" onSubmit={handleSubmit}>
           <h2>Login</h2>
           <input
             type="email"
