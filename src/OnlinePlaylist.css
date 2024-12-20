@@ -1,0 +1,50 @@
+.playlist-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.playlist-img {
+    margin-top: 2vh;
+    width: 70vw;
+}
+
+.playlist-container > h3 {
+    align-self: flex-start;
+    margin: 2vh 0 0 2vw;
+}
+
+.playlist-container > p {
+    align-self: flex-start;
+    text-align: left;
+    font-size: 0.6rem;
+    margin: 0 0 0 2vw;
+}
+
+.playlist-tracks {
+    align-self: flex-start;
+    list-style: none;
+    padding: 0;
+    width: 100%;
+    margin: 0;
+}
+
+.track-img {
+    width: 15vw;
+}
+
+.track-meta {
+    padding: 0;
+    background: none;
+    gap: 1vh;
+}
+
+.track-meta > p {
+    font-size: 0.8rem;
+    text-align: left;
+}
+
+.artist-name {
+    color: #D3D3D3;
+}

@@ -1,6 +1,6 @@
 import "./Search.css";
 
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useState } from "react";
 
@@ -11,6 +11,8 @@ function Search() {
   const [artists, setArtists] = useState([]);
   const [playlists, setPlaylists] = useState([]);
   const [tracks, setTracks] = useState([]);
+
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -44,6 +46,21 @@ function Search() {
     }
   };
 
+  const handleAlbum = (e, albumID) => {
+    e.preventDefault();
+    navigate(`/album/${albumID}`);
+  };
+
+  const handleArtist = (e, artistID) => {
+    e.preventDefault();
+    navigate(`/artist/${artistID}`);
+  };
+
+  const handlePlaylist = (e, playlistID) => {
+    e.preventDefault();
+    navigate(`/playlist/${playlistID}`);
+  };
+
   return (
     <>
       <form className="search-input" onSubmit={handleSubmit}>
@@ -60,8 +77,8 @@ function Search() {
           <h2>Results</h2>
           <ul className="results-list">
             {albums.map((album) => (
-              <li key={album.external_urls.id} className="result-item">
-                <button>
+              <li key={album.id} className="result-item">
+                <button onClick={(e) => handleAlbum(e, album.id)}>
                   <img src={album.images[0].url} />
                   <div className="result-details">
                     <p>{album.name}</p>
@@ -71,7 +88,7 @@ function Search() {
                           album.type.slice(1) +
                           " •"}
                       </p>
-                      {album.artists.map((artist, index) => (
+                      {album.artists.map((artist) => (
                         <p key={artist.id}>{artist.name}</p>
                       ))}
                     </div>
@@ -83,7 +100,7 @@ function Search() {
           <ul className="results-list">
             {artists.map((artist) => (
               <li key={artist.id} className="result-item">
-                <button>
+                <button onClick={(e) => handleArtist(e, artist.id)}>
                   <img src={artist.images[0].url} />
                   <div className="result-details">
                     <p>{artist.name}</p>
@@ -100,8 +117,8 @@ function Search() {
           </ul>
           <ul className="results-list">
             {playlists.filter(Boolean).map((playlist) => (
-              <li key={playlist.external_urls.id} className="result-item">
-                <button>
+              <li key={playlist.id} className="result-item">
+                <button onClick={(e) => handlePlaylist(e, playlist.id)}>
                   <img src={playlist.images[0].url} />
                   <div className="result-details">
                     <p>{playlist.name}</p>

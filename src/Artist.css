@@ -1,0 +1,107 @@
+.artist-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.back-btn {
+    width: 8vw;
+    height: 8vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    position: absolute;
+    top: 2vh;
+    left: 1vw;
+    background: none;
+}
+
+.artist-img {
+    width: 100%;
+}
+
+.artist-container > h2 {
+    margin: 0;
+    margin: 0 0 0 2vw;
+    padding: 0;
+}
+
+.artist-container > p {
+    font-size: 0.7rem;
+    margin: 0 0 0 2vw;
+}
+
+.popular-container {
+    margin-top: 2vh;
+}
+
+.popular-container > h3 {
+    margin: 0 0 0 2vw;
+}
+
+.top-tracks {
+    list-style: upper-roman;
+    margin: 0;
+}
+
+.track-container {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 2vw;
+}
+
+.track-img {
+    width: 10vw;
+}
+
+.releases-container {
+    display: flex;
+    flex-direction: column;
+    margin-top: 2vh;
+}
+
+.releases-container > h3 {
+    align-self: flex-start;
+    margin: 0 0 0 2vw;
+}
+
+.albums {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.album-btn {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 2vw;
+}
+
+.album-btn-img {
+    width: 15vw;
+    padding: 0;
+}
+
+.album-details {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    align-items: flex-start;
+    align-self: center;
+    text-align: left;
+}
+
+.album-meta {
+    display: flex;
+    flex-direction: row;
+    gap: 1vw;
+}
+
+.album-meta > p {
+    margin: 0;
+}

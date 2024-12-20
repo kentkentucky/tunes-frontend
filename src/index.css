@@ -13,3 +13,17 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+p {
+  font-family: "Tiny5", serif;
+  font-weight: 400;
+}
+
+span {
+  font-family: "Tiny5", serif;
+  font-weight: 400;
+}
+
+footer > a {
+  font-size: 0.5rem;
+}

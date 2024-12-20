@@ -26,16 +26,16 @@
 }
 
 .login-form > input {
-    height: 3vh;
-    width: 20vw;
+    height: 4vh;
+    width: 60vw;
     font-family: "Tiny5", serif;
 }
 
 .login-form > button {
     background-color: green;
     border-radius: 5px;
-    width: 20vw;
-    height: 4vh;
+    width: 40vw;
+    height: 5vh;
     border: none;
     font-family: "Tiny5", serif;
 }
@@ -50,5 +50,5 @@ footer {
 }
 
 .cassette-icon {
-    width: 10vw;
+    width: 20vw;
 }

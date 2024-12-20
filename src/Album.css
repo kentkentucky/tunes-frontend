@@ -1,0 +1,90 @@
+.album-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.back-btn {
+    width: 8vw;
+    height: 8vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    position: absolute;
+    top: 2vh;
+    left: 1vw;
+    background: none;
+}
+
+.back-btn > img {
+    width: 6vw;
+}
+
+.album-container > h2 {
+    align-self: flex-start;
+    margin: 2vw 0 0 2vw;
+    padding: 0;
+}
+
+.album-container > span {
+    align-self: flex-start;
+    margin: 0 0 0 2vw;
+    padding: 0;
+    font-size: 0.8rem;
+}
+
+.album-img {
+    width: 70vw;
+    padding: 2vw;
+}
+
+.album-details {
+    display: flex;
+    flex-direction: row;
+    align-self: flex-start;
+    justify-content: center;
+    align-content: center;
+    margin: 0 0 0 2vw;
+    gap: 1vw;
+}
+
+.album-details > p {
+    margin: 0;
+    font-size: 0.8rem;
+}
+
+.track-list {
+    align-self: flex-start;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+}
+
+.track-meta {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    width: 100%;
+    background-color: #2B3036;
+    border: none;
+    padding: 1.5vh;
+}
+
+.track-meta > p {
+    margin: 0;
+}
+
+.track-artist {
+    display: flex;
+    flex-direction: row;
+    gap: 1vw;
+}
+
+.track-artist > span {
+    font-size: 0.4rem;
+    color: #D3D3D3;
+}
