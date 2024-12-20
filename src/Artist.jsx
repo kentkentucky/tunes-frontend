@@ -1,21 +1,24 @@
 import "./Artist.css";
 
 import { useParams, useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import axios from "axios";
 
 import back from "./icons/left-angle.png";
+import { TokenContext } from "./App";
 
 function Artist() {
+  const tokenContext = useContext(TokenContext);
   const { artistID } = useParams();
   const [artist, setArtist] = useState(null);
+  const accessToken = tokenContext.accessToken;
 
   const navigate = useNavigate();
 
   const getArtist = async () => {
     try {
       const response = await axios.get("http://localhost:3000/search/artist", {
-        params: { artistID },
+        params: { artistID, accessToken },
       });
       setArtist(response.data);
     } catch (error) {

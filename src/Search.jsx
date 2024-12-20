@@ -180,7 +180,7 @@ function Search() {
                 );
               } else if (search.type === "track") {
                 return (
-                  <li key={search.id} className="result-list">
+                  <li key={search.id} className="result-item">
                     <button onClick={(e) => handleTrack(e, search)}>
                       <img src={search.album.images[0].url} />
                       <div className="result-details">
@@ -194,7 +194,7 @@ function Search() {
                           {search.artists.map((artist, index) => (
                             <span key={artist.id}>
                               {artist.name}
-                              {index < track.artists.length - 1 && ", "}
+                              {index < search.artists.length - 1 && ", "}
                             </span>
                           ))}
                         </div>

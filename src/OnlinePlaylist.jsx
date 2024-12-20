@@ -1,14 +1,17 @@
 import "./OnlinePlaylist.css";
 
 import { useParams, useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import axios from "axios";
 
 import back from "./icons/left-angle.png";
+import { TokenContext } from "./App";
 
 function OnlinePlaylist() {
+  const tokenContext = useContext(TokenContext);
   const { playlistID } = useParams();
   const [playlist, setPlaylist] = useState(null);
+  const accessToken = tokenContext.accessToken;
 
   const navigate = useNavigate();
 
@@ -17,7 +20,7 @@ function OnlinePlaylist() {
       const response = await axios.get(
         "http://localhost:3000/search/playlist",
         {
-          params: { playlistID },
+          params: { playlistID, accessToken },
         }
       );
       setPlaylist(response.data);
