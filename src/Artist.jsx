@@ -14,7 +14,7 @@ function Artist() {
 
   const getArtist = async () => {
     try {
-      const response = await axios.get("http://localhost:3000/artist", {
+      const response = await axios.get("http://localhost:3000/search/artist", {
         params: { artistID },
       });
       setArtist(response.data);

@@ -14,7 +14,7 @@ function Album() {
 
   const getAlbum = async () => {
     try {
-      const response = await axios.get("http://localhost:3000/album", {
+      const response = await axios.get("http://localhost:3000/search/album", {
         params: { albumID },
       });
       setAlbum(response.data);

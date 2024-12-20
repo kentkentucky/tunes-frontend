@@ -14,9 +14,12 @@ function OnlinePlaylist() {
 
   const getPlaylist = async () => {
     try {
-      const response = await axios.get("http://localhost:3000/playlist", {
-        params: { playlistID },
-      });
+      const response = await axios.get(
+        "http://localhost:3000/search/playlist",
+        {
+          params: { playlistID },
+        }
+      );
       setPlaylist(response.data);
     } catch (error) {
       console.error(error);
