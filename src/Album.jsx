@@ -1,21 +1,25 @@
 import "./Album.css";
 
 import { useParams, useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import axios from "axios";
 
 import back from "./icons/left-angle.png";
+import { TokenContext } from "./App";
 
 function Album() {
+  const tokenContext = useContext(TokenContext);
+
   const { albumID } = useParams();
   const [album, setAlbum] = useState(null);
+  const accessToken = tokenContext.accessToken;
 
   const navigate = useNavigate();
 
   const getAlbum = async () => {
     try {
       const response = await axios.get("http://localhost:3000/search/album", {
-        params: { albumID },
+        params: { albumID, accessToken },
       });
       setAlbum(response.data);
     } catch (error) {

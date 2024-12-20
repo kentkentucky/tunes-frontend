@@ -1,21 +1,37 @@
 import "./Login.css";
 
 import axios from "axios";
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 
 import cassette from "./icons/cassette.png";
-import { UserContext } from "./App";
-
-const AUTH_URL =
-  "https://accounts.spotify.com/authorize?client_id=8b945ef10ea24755b83ac50cede405a0&response_type=code&redirect_uri=http://localhost:3000&scope=streaming%20user-read-email%20user-read-private%20user-library-read%20user-library-modify%20user-read-playback-state%20user-modify-playback-state";
+import { UserContext, TokenContext } from "./App";
 
 function Login() {
+  let code = new URLSearchParams(window.location.search).get("code");
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const navigate = useNavigate();
   const userContext = useContext(UserContext);
+  const tokenContext = useContext(TokenContext);
+
+  useEffect(() => {
+    requestAccessToken();
+  }, [code]);
+
+  const requestAccessToken = async () => {
+    try {
+      const response = await axios.post("http://localhost:3000/auth/token", {
+        code,
+      });
+      const token = response.data;
+      tokenContext.setAccessToken(token);
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -26,7 +42,7 @@ function Login() {
       });
       if (response) {
         userContext.setUser(response.data);
-        navigate("/auth");
+        navigate("/home");
       }
     } catch (error) {
       console.error(error);
