@@ -1,0 +1,14 @@
+.auth-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.auth-btn {
+    width: 40vw;
+    height: 5vh;
+    background-color: green;
+    border: none;
+    border-radius: 10px;
+}

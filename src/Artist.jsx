@@ -29,10 +29,7 @@ function Artist() {
   };
 
   useEffect(() => {
-    const fetchArtist = async () => {
-      await getArtist();
-    };
-    fetchArtist();
+    getArtist();
   }, [artistID]);
 
   return (
@@ -72,9 +69,9 @@ function Artist() {
                         src={album.images[0].url}
                         className="album-btn-img"
                       />
-                      <div className="album-details">
+                      <div className="album-btn-details">
                         <p>{album.name}</p>
-                        <div className="album-meta">
+                        <div className="album-btn-meta">
                           <p>{album.release_date.substring(0, 4) + " •"}</p>
                           <p>
                             {album.type.charAt(0).toUpperCase() +

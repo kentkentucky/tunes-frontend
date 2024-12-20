@@ -29,10 +29,7 @@ function OnlinePlaylist() {
   };
 
   useEffect(() => {
-    const fetchPlaylist = async () => {
-      await getPlaylist();
-    };
-    fetchPlaylist();
+    getPlaylist();
   }, [playlistID]);
 
   return (
@@ -50,13 +47,13 @@ function OnlinePlaylist() {
             <p>{playlist.followers.total} saves</p>
             <ul className="playlist-tracks">
               {playlist.tracks.items.map((track) => (
-                <li>
+                <li key={track.track.id}>
                   <button className="track-container">
                     <img
                       src={track.track.album.images[0].url}
                       className="track-img"
                     />
-                    <div className="track-meta">
+                    <div className="playlist-track-meta">
                       <p>{track.track.name}</p>
                       <div className="artist-name">
                         {track.track.artists.map((artist, index) => (

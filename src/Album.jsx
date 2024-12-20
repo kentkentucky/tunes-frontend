@@ -29,10 +29,7 @@ function Album() {
   };
 
   useEffect(() => {
-    const fetchAlbum = async () => {
-      await getAlbum();
-    };
-    fetchAlbum();
+    getAlbum();
   }, [albumID]);
 
   return (

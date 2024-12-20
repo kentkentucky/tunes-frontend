@@ -87,7 +87,7 @@
     padding: 0;
 }
 
-.album-details {
+.album-btn-details {
     display: flex;
     flex-direction: column;
     margin: 0;
@@ -96,12 +96,12 @@
     text-align: left;
 }
 
-.album-meta {
+.album-btn-meta {
     display: flex;
     flex-direction: row;
     gap: 1vw;
 }
 
-.album-meta > p {
+.album-btn-meta > p {
     margin: 0;
 }
