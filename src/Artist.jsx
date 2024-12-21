@@ -119,7 +119,7 @@ function Artist() {
               </ul>
             </div>
           </div>
-          <div>
+          <div className="player-container">
             <Player
               accessToken={accessToken}
               trackUri={trackContext.currentTrack?.uri}

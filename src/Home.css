@@ -4,3 +4,79 @@
     justify-content: center;
     align-items: center;
 }
+
+.home-container > h1 {
+    margin: 0;
+}
+
+.recents-container {
+    width: 100%;
+}
+
+.recents-container > h2 {
+    margin: 0 0 0 2vw;
+}
+
+.results-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.result-item > button {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 2vw;
+    width: 100%;
+    background-color: #2B3036;
+    border: none;
+    padding: 1vh;
+}
+
+.result-item > button > img {
+    width: 10vw;
+    height: 10vw;
+}
+
+.result-details {
+    display: flex;
+    flex-direction: column;
+    gap: 1vh;
+}
+
+.result-details > p {
+    margin: 0;
+    align-self: flex-start;
+}
+
+.result-meta {
+    display: flex;
+    flex-direction: row;
+    gap: 1vw;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+}
+
+.result-meta > p {
+    margin: 0;
+}
+
+.playlists-container {
+    width: 100%;
+}
+
+.playlists-container > h2 {
+    margin: 0 0 0 2vw;
+}
+
+.player-with-navbar {
+    position: fixed;
+    bottom: 8vh;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+}

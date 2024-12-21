@@ -45,9 +45,20 @@ function OnlinePlaylist() {
     navigate(-1);
   };
 
-  const handleTrack = async (e, track) => {
+  const handleTrack = async (e, track, playlist) => {
     e.preventDefault();
-    trackContext.setCurrentTrack(track);
+    try {
+      const response = await axios.post(
+        "http://localhost:3000/recent/add/playlist",
+        {
+          playlist,
+          user,
+        }
+      );
+      if (response) trackContext.setCurrentTrack(track);
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (
@@ -68,7 +79,7 @@ function OnlinePlaylist() {
                 <li key={track.track.id}>
                   <button
                     className="track-container"
-                    onClick={(e) => handleTrack(e, track.track)}
+                    onClick={(e) => handleTrack(e, track.track, playlist)}
                   >
                     <img
                       src={track.track.album.images[0].url}
@@ -90,7 +101,7 @@ function OnlinePlaylist() {
               ))}
             </ul>
           </div>
-          <div>
+          <div className="player-container">
             <Player
               accessToken={accessToken}
               trackUri={trackContext.currentTrack?.uri}

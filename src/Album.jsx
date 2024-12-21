@@ -11,10 +11,12 @@ import { TokenContext, TrackContext, UserContext } from "./App";
 function Album() {
   const tokenContext = useContext(TokenContext);
   const trackContext = useContext(TrackContext);
+  const userContext = useContext(UserContext);
 
   const { albumID } = useParams();
   const [album, setAlbum] = useState(null);
   const accessToken = tokenContext.accessToken;
+  const user = userContext.user;
 
   const navigate = useNavigate();
 
@@ -39,9 +41,20 @@ function Album() {
     navigate(-1);
   };
 
-  const handleTrack = async (e, track) => {
+  const handleTrack = async (e, track, album) => {
     e.preventDefault();
-    trackContext.setCurrentTrack(track);
+    try {
+      const response = await axios.post(
+        "http://localhost:3000/recent/add/album",
+        {
+          album,
+          user,
+        }
+      );
+      if (response) trackContext.setCurrentTrack(track);
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (
@@ -73,7 +86,7 @@ function Album() {
                 <li key={track.id} className="track-container">
                   <button
                     className="track-meta"
-                    onClick={(e) => handleTrack(e, track)}
+                    onClick={(e) => handleTrack(e, track, album)}
                   >
                     <p>{track.name}</p>
                     <div className="track-artist">
@@ -89,7 +102,7 @@ function Album() {
               ))}
             </ul>
           </div>
-          <div>
+          <div className="player-container">
             <Player
               accessToken={accessToken}
               trackUri={trackContext.currentTrack?.uri}

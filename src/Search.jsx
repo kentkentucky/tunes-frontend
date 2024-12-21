@@ -217,7 +217,7 @@ function Search() {
                   </li>
                 );
               } else {
-                return null; // If type does not match, render nothing
+                return null;
               }
             })}
           </ul>
@@ -311,7 +311,7 @@ function Search() {
           </ul>
         </div>
       )}
-      <div>
+      <div className="player-container">
         <Player
           accessToken={accessToken}
           trackUri={trackContext.currentTrack?.uri}
