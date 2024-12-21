@@ -6,7 +6,8 @@ import axios from "axios";
 
 import back from "./icons/left-angle.png";
 import Player from "./components/Player";
-import { TokenContext, TrackContext, UserContext } from "./App";
+import Navbar from "./components/Navbar";
+import { TokenContext, TrackContext } from "./App";
 
 function OnlinePlaylist() {
   const tokenContext = useContext(TokenContext);
@@ -101,12 +102,11 @@ function OnlinePlaylist() {
               ))}
             </ul>
           </div>
-          <div className="player-container">
-            <Player
-              accessToken={accessToken}
-              trackUri={trackContext.currentTrack?.uri}
-            />
-          </div>
+          <Player
+            accessToken={accessToken}
+            trackUri={trackContext.currentTrack?.uri}
+          />
+          <Navbar />
           <footer>
             <a
               href="https://www.flaticon.com/free-icons/pixel"

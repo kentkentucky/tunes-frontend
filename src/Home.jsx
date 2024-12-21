@@ -128,15 +128,15 @@ function Home() {
           </ul>
         </div>
         <div className="playlists-container">
-          <h2>Playlists</h2>
+          <div className="playlist-header">
+            <h2>Playlists</h2>
+          </div>
         </div>
       </div>
-      <div className="player-with-navbar">
-        <Player
-          accessToken={accessToken}
-          trackUri={trackContext.currentTrack?.uri}
-        />
-      </div>
+      <Player
+        accessToken={accessToken}
+        trackUri={trackContext.currentTrack?.uri}
+      />
       <Navbar />
     </>
   );

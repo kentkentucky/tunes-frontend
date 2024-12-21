@@ -1,3 +1,5 @@
+import "./Player.css";
+
 import { useState, useEffect, useContext } from "react";
 
 import SpotifyWebPlayer from "react-spotify-web-playback";
@@ -16,23 +18,25 @@ function Player({ accessToken, trackUri }) {
   if (!accessToken) return null;
 
   return (
-    <SpotifyWebPlayer
-      token={accessToken}
-      showSaveIcon
-      play={true}
-      uris={trackUri ? [trackUri] : []}
-      callback={(state) => {
-        if (!state.isPlaying) setPlay(false);
-      }}
-      styles={{
-        bgColor: "#333",
-        color: "#fff",
-        loaderColor: "#fff",
-        sliderColor: "#1cb954",
-        trackArtistColor: "#ccc",
-        trackNameColor: "#fff",
-      }}
-    />
+    <div className="player-container">
+      <SpotifyWebPlayer
+        token={accessToken}
+        showSaveIcon
+        play={true}
+        uris={trackUri ? [trackUri] : []}
+        callback={(state) => {
+          if (!state.isPlaying) setPlay(false);
+        }}
+        styles={{
+          bgColor: "#333",
+          color: "#fff",
+          loaderColor: "#fff",
+          sliderColor: "#1cb954",
+          trackArtistColor: "#ccc",
+          trackNameColor: "#fff",
+        }}
+      />
+    </div>
   );
 }
 

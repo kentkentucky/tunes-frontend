@@ -69,14 +69,6 @@
     width: 100%;
 }
 
-.playlists-container > h2 {
+.playlist-header > h2 {
     margin: 0 0 0 2vw;
-}
-
-.player-with-navbar {
-    position: fixed;
-    bottom: 8vh;
-    left: 0;
-    width: 100%;
-    z-index: 1000;
 }

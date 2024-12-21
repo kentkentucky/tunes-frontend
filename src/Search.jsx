@@ -6,6 +6,7 @@ import { useState, useContext, useEffect } from "react";
 
 import { TokenContext, UserContext, TrackContext } from "./App";
 import Player from "./components/Player";
+import Navbar from "./components/Navbar";
 
 function Search() {
   const tokenContext = useContext(TokenContext);
@@ -311,12 +312,11 @@ function Search() {
           </ul>
         </div>
       )}
-      <div className="player-container">
-        <Player
-          accessToken={accessToken}
-          trackUri={trackContext.currentTrack?.uri}
-        />
-      </div>
+      <Player
+        accessToken={accessToken}
+        trackUri={trackContext.currentTrack?.uri}
+      />
+      <Navbar />
     </>
   );
 }
