@@ -5,16 +5,23 @@ import { useEffect, useState, useContext } from "react";
 import axios from "axios";
 
 import back from "./icons/left-angle.png";
-import { TokenContext } from "./App";
+import Player from "./components/Player";
+import { TokenContext, TrackContext, UserContext } from "./App";
 
 function Album() {
   const tokenContext = useContext(TokenContext);
+  const trackContext = useContext(TrackContext);
 
   const { albumID } = useParams();
   const [album, setAlbum] = useState(null);
   const accessToken = tokenContext.accessToken;
 
   const navigate = useNavigate();
+
+  useEffect(() => {
+    getAlbum();
+    trackContext.setCurrentTrack();
+  }, [albumID]);
 
   const getAlbum = async () => {
     try {
@@ -32,9 +39,10 @@ function Album() {
     navigate(-1);
   };
 
-  useEffect(() => {
-    getAlbum();
-  }, [albumID]);
+  const handleTrack = async (e, track) => {
+    e.preventDefault();
+    trackContext.setCurrentTrack(track);
+  };
 
   return (
     <>
@@ -63,7 +71,10 @@ function Album() {
             <ul className="track-list">
               {album.tracks.items.map((track) => (
                 <li key={track.id} className="track-container">
-                  <button className="track-meta">
+                  <button
+                    className="track-meta"
+                    onClick={(e) => handleTrack(e, track)}
+                  >
                     <p>{track.name}</p>
                     <div className="track-artist">
                       {track.artists.map((artist, index) => (
@@ -77,6 +88,12 @@ function Album() {
                 </li>
               ))}
             </ul>
+          </div>
+          <div>
+            <Player
+              accessToken={accessToken}
+              trackUri={trackContext.currentTrack?.uri}
+            />
           </div>
           <footer>
             <a

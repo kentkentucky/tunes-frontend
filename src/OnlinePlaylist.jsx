@@ -5,15 +5,26 @@ import { useEffect, useState, useContext } from "react";
 import axios from "axios";
 
 import back from "./icons/left-angle.png";
-import { TokenContext } from "./App";
+import Player from "./components/Player";
+import { TokenContext, TrackContext, UserContext } from "./App";
 
 function OnlinePlaylist() {
   const tokenContext = useContext(TokenContext);
+  const trackContext = useContext(TrackContext);
   const { playlistID } = useParams();
   const [playlist, setPlaylist] = useState(null);
   const accessToken = tokenContext.accessToken;
 
   const navigate = useNavigate();
+
+  useEffect(
+    () => {
+      getPlaylist();
+      trackContext.setCurrentTrack();
+    },
+    [playlistID],
+    []
+  );
 
   const getPlaylist = async () => {
     try {
@@ -34,9 +45,10 @@ function OnlinePlaylist() {
     navigate(-1);
   };
 
-  useEffect(() => {
-    getPlaylist();
-  }, [playlistID]);
+  const handleTrack = async (e, track) => {
+    e.preventDefault();
+    trackContext.setCurrentTrack(track);
+  };
 
   return (
     <>
@@ -54,7 +66,10 @@ function OnlinePlaylist() {
             <ul className="playlist-tracks">
               {playlist.tracks.items.map((track) => (
                 <li key={track.track.id}>
-                  <button className="track-container">
+                  <button
+                    className="track-container"
+                    onClick={(e) => handleTrack(e, track.track)}
+                  >
                     <img
                       src={track.track.album.images[0].url}
                       className="track-img"
@@ -74,6 +89,12 @@ function OnlinePlaylist() {
                 </li>
               ))}
             </ul>
+          </div>
+          <div>
+            <Player
+              accessToken={accessToken}
+              trackUri={trackContext.currentTrack?.uri}
+            />
           </div>
           <footer>
             <a

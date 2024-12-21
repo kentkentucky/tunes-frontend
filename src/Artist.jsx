@@ -5,15 +5,23 @@ import { useEffect, useState, useContext } from "react";
 import axios from "axios";
 
 import back from "./icons/left-angle.png";
-import { TokenContext } from "./App";
+import { TokenContext, TrackContext, UserContext } from "./App";
+import Player from "./components/Player";
 
 function Artist() {
   const tokenContext = useContext(TokenContext);
+  const trackContext = useContext(TrackContext);
+  const userContext = useContext(UserContext);
   const { artistID } = useParams();
   const [artist, setArtist] = useState(null);
   const accessToken = tokenContext.accessToken;
+  const user = userContext.user;
 
   const navigate = useNavigate();
+
+  useEffect(() => {
+    getArtist();
+  }, [artistID]);
 
   const getArtist = async () => {
     try {
@@ -31,9 +39,26 @@ function Artist() {
     navigate(-1);
   };
 
-  useEffect(() => {
-    getArtist();
-  }, [artistID]);
+  const handleTrack = async (e, track) => {
+    e.preventDefault();
+    trackContext.setCurrentTrack(track);
+  };
+
+  const handleAlbum = async (e, album) => {
+    e.preventDefault();
+    try {
+      const response = await axios.post(
+        "http://localhost:3000/search/add/album",
+        {
+          album,
+          user,
+        }
+      );
+      if (response) navigate(`/album/${album.id}`);
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   return (
     <>
@@ -51,7 +76,10 @@ function Artist() {
               <ol className="top-tracks">
                 {artist.tracks.tracks.map((track) => (
                   <li key={track.id}>
-                    <button className="track-container">
+                    <button
+                      className="track-container"
+                      onClick={(e) => handleTrack(e, track)}
+                    >
                       <img
                         src={track.album.images[0].url}
                         className="track-img"
@@ -67,7 +95,10 @@ function Artist() {
               <ul className="albums">
                 {artist.albums.items.map((album) => (
                   <li key={album.id}>
-                    <button className="album-btn">
+                    <button
+                      className="album-btn"
+                      onClick={(e) => handleAlbum(e, album)}
+                    >
                       <img
                         src={album.images[0].url}
                         className="album-btn-img"
@@ -87,6 +118,12 @@ function Artist() {
                 ))}
               </ul>
             </div>
+          </div>
+          <div>
+            <Player
+              accessToken={accessToken}
+              trackUri={trackContext.currentTrack?.uri}
+            />
           </div>
           <footer>
             <a

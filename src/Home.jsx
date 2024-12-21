@@ -2,7 +2,7 @@ import "./Home.css";
 
 import { useContext, useEffect, useState } from "react";
 
-import { UserContext } from "./App";
+import { UserContext, TokenContext, TrackContext } from "./App";
 
 import Navbar from "./components/Navbar";
 import Player from "./components/Player";
@@ -10,6 +10,13 @@ import axios from "axios";
 
 function Home() {
   const userContext = useContext(UserContext);
+  const trackContext = useContext(TrackContext);
+  const tokenContext = useContext(TokenContext);
+  const accessToken = tokenContext.accessToken;
+
+  useEffect(() => {
+    trackContext.setCurrentTrack();
+  }, []);
 
   return (
     <>
@@ -22,7 +29,12 @@ function Home() {
           <h2>Recents</h2>
         </div>
       </div>
-      <div></div>
+      <div>
+        <Player
+          accessToken={accessToken}
+          trackUri={trackContext.currentTrack?.uri}
+        />
+      </div>
       <Navbar />
     </>
   );

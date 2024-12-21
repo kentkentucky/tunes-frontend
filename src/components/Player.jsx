@@ -1,15 +1,17 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 
 import SpotifyWebPlayer from "react-spotify-web-playback";
+import { TrackContext } from "../App";
 
 function Player({ accessToken, trackUri }) {
+  const trackContext = useContext(TrackContext);
   const [play, setPlay] = useState(false);
 
   useEffect(() => {
-    if (trackUri) {
-      setPlay(true); // Automatically play when a new track is passed
+    if (trackContext.currentTrack) {
+      setPlay(true);
     }
-  }, [trackUri]);
+  }, [trackContext.currentTrack]);
 
   if (!accessToken) return null;
 

@@ -4,12 +4,13 @@ import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import { useState, useContext, useEffect } from "react";
 
-import { TokenContext, UserContext } from "./App";
+import { TokenContext, UserContext, TrackContext } from "./App";
 import Player from "./components/Player";
 
 function Search() {
   const tokenContext = useContext(TokenContext);
   const userContext = useContext(UserContext);
+  const trackContext = useContext(TrackContext);
 
   const [search, setSearch] = useState("");
   const [result, setResult] = useState(false);
@@ -17,7 +18,6 @@ function Search() {
   const [artists, setArtists] = useState([]);
   const [playlists, setPlaylists] = useState([]);
   const [tracks, setTracks] = useState([]);
-  const [selectedTrack, setSelectedTrack] = useState([]);
   const [recentSearch, setRecentSearch] = useState([]);
   const user = userContext.user;
   const accessToken = tokenContext.accessToken;
@@ -26,6 +26,7 @@ function Search() {
 
   useEffect(() => {
     getSearches();
+    trackContext.setCurrentTrack();
   }, []);
 
   const getSearches = async () => {
@@ -61,7 +62,6 @@ function Search() {
 
   const handleTrack = async (e, track) => {
     e.preventDefault();
-    const trackID = track.id;
     try {
       const response = await axios.post(
         "http://localhost:3000/search/add/track",
@@ -71,10 +71,7 @@ function Search() {
         }
       );
       if (response) {
-        const track = await axios.get("http://localhost:3000/search/track", {
-          params: { trackID, accessToken },
-        });
-        if (track) setSelectedTrack(track.data);
+        trackContext.setCurrentTrack(track);
       }
     } catch (error) {
       console.error(error);
@@ -315,7 +312,10 @@ function Search() {
         </div>
       )}
       <div>
-        <Player accessToken={accessToken} trackUri={selectedTrack?.uri} />
+        <Player
+          accessToken={accessToken}
+          trackUri={trackContext.currentTrack?.uri}
+        />
       </div>
     </>
   );
