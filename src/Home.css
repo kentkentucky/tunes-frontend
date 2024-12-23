@@ -69,6 +69,34 @@
     width: 100%;
 }
 
+.playlist-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
 .playlist-header > h2 {
     margin: 0 0 0 2vw;
+}
+
+.add-btn {
+    background: none;
+    border: none;
+    margin-right: 2vw;
+}
+
+.add-icon {
+    width: 8vw;
+    filter: brightness(0) invert(1);
+}
+
+.playlist-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.playlist-name {
+    margin: 0 0 0 2vw;
+    font-size: 0.9rem;
 }

@@ -121,17 +121,28 @@ function Search() {
           user,
         }
       );
-      if (response) navigate(`/playlist/${playlist.id}`);
+      if (response) navigate(`/onlineplaylist/${playlist.id}`);
     } catch (error) {
       console.error(error);
     }
   };
 
+  const handleCancel = (e) => {
+    e.preventDefault();
+    navigate(-1);
+  };
+
   return (
     <>
       <form className="search-input" onSubmit={(e) => handleSubmit(e)}>
-        <input type="text" onChange={handleSearch}></input>
-        <Link to="/home">Cancel</Link>
+        <input
+          type="text"
+          onChange={handleSearch}
+          placeholder=" 🔍  What do you want to listen to?"
+        ></input>
+        <button className="cancel-word-btn" onClick={(e) => handleCancel(e)}>
+          Cancel
+        </button>
       </form>
       {!result && (
         <div className="recent-search">

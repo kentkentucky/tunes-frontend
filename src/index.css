@@ -14,6 +14,9 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  overflow-y: auto;
+  padding-bottom: 10vh;
 }
 
 p {
@@ -24,6 +27,10 @@ p {
 span {
   font-family: "Tiny5", serif;
   font-weight: 400;
+}
+
+footer {
+  margin-top: 2vh;
 }
 
 footer > a {

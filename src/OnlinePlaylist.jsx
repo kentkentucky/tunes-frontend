@@ -12,9 +12,10 @@ import { TokenContext, TrackContext } from "./App";
 function OnlinePlaylist() {
   const tokenContext = useContext(TokenContext);
   const trackContext = useContext(TrackContext);
+  const accessToken = tokenContext.accessToken;
+
   const { playlistID } = useParams();
   const [playlist, setPlaylist] = useState(null);
-  const accessToken = tokenContext.accessToken;
 
   const navigate = useNavigate();
 

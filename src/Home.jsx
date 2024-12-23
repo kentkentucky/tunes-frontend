@@ -2,12 +2,13 @@ import "./Home.css";
 
 import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 import { UserContext, TokenContext, TrackContext } from "./App";
 
 import Navbar from "./components/Navbar";
 import Player from "./components/Player";
-import axios from "axios";
+import add from "./icons/add.png";
 
 function Home() {
   const userContext = useContext(UserContext);
@@ -17,11 +18,13 @@ function Home() {
   const user = userContext.user;
 
   const [recents, setRecents] = useState([]);
+  const [playlists, setPlaylists] = useState([]);
 
   const navigate = useNavigate();
 
   useEffect(() => {
     getRecents();
+    getPlaylists();
     trackContext.setCurrentTrack();
   }, []);
 
@@ -31,6 +34,17 @@ function Home() {
         params: { user },
       });
       setRecents(response.data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const getPlaylists = async () => {
+    try {
+      const response = await axios.get("http://localhost:3000/home/playlist", {
+        params: { user },
+      });
+      setPlaylists(response.data);
     } catch (error) {
       console.error(error);
     }
@@ -46,9 +60,19 @@ function Home() {
     navigate(`/album/${album.id}`);
   };
 
-  const handlePlaylist = (e, playlist) => {
+  const handleOnlinePlaylist = (e, playlist) => {
     e.preventDefault();
-    navigate(`/playlist/${playlist.id}`);
+    navigate(`/onlineplaylist/${playlist.id}`);
+  };
+
+  const handleAdd = (e) => {
+    e.preventDefault();
+    navigate("/playlist/create");
+  };
+
+  const handlePlaylist = (e, playlistID) => {
+    e.preventDefault();
+    navigate(`/playlist/${playlistID}`);
   };
 
   return (
@@ -107,7 +131,7 @@ function Home() {
               } else if (recent.type === "playlist") {
                 return (
                   <li key={recent.id} className="result-item">
-                    <button onClick={(e) => handlePlaylist(e, recent)}>
+                    <button onClick={(e) => handleOnlinePlaylist(e, recent)}>
                       <img src={recent.images[0].url} />
                       <div className="result-details">
                         <p>{recent.name}</p>
@@ -130,7 +154,20 @@ function Home() {
         <div className="playlists-container">
           <div className="playlist-header">
             <h2>Playlists</h2>
+            <button className="add-btn" onClick={handleAdd}>
+              <img src={add} className="add-icon" />
+            </button>
           </div>
+          <ul className="playlist-list">
+            {playlists.map((playlist) => (
+              <li key={playlist._id} className="result-item">
+                <button onClick={(e) => handlePlaylist(e, playlist._id)}>
+                  <img src={playlist.image} />
+                  <p className="playlist-name">{playlist.name}</p>
+                </button>
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
       <Player
@@ -138,6 +175,11 @@ function Home() {
         trackUri={trackContext.currentTrack?.uri}
       />
       <Navbar />
+      <footer>
+        <a href="https://www.flaticon.com/free-icons/pixel" title="pixel icons">
+          Pixel icons created by menon - Flaticon
+        </a>
+      </footer>
     </>
   );
 }

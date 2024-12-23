@@ -1,0 +1,53 @@
+.create-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+}
+
+.create-form > input {
+    width: 50vw;
+    height: 3.5vh;
+    font-family: "Tiny5", serif;
+    font-size: 0.8rem;
+}
+
+.create-btn {
+    margin: 4vh;
+    width: 20vw;
+    height: 4vh;
+    border-radius: 15px;
+    border: none;
+    background-color: green;
+}
+
+.cancel-btn {
+    background: none;
+    border: none;
+    margin: 2vw;
+}
+
+.cancel-icon {
+    width: 10vw;
+    filter: brightness(0) invert(1);
+}
+
+.popup-content {
+    padding: 20px;
+    background: #333;
+    color: #fff;
+    text-align: center;
+    border-radius: 10px;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.popup-content button {
+    background: #1db954;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}

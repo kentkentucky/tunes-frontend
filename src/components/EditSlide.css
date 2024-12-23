@@ -1,0 +1,109 @@
+.edit-slide {
+    position: absolute;
+    z-index: 10;
+    background-color: #212122;
+    width: 97%;
+    height: 150vh;
+}
+
+.top-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: 2vh 1vw 0 1vw;
+}
+
+.top-container > h3 {
+    margin: 0;
+}
+
+.terminate-btn {
+    width: 8vw;
+    height: 8vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    background: none;
+}
+
+.terminate-icon {
+    width: 5vw;
+    filter: brightness(0) invert(1);
+}
+
+.delete-btn {
+    width: 20vw;
+    height: 5vh;
+    background-color: red;
+    border: none;
+    font-family: "Tiny5", serif;
+    border-radius: 10px;
+}
+
+.track-results {
+    list-style: none;
+    padding: 0;
+    margin: 4vw 0 0 0;
+}
+
+.track-row > button {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 2vw;
+    width: 100%;
+    background-color: #2B3036;
+    border: none;
+    padding: 1vh;
+}
+
+.track-row > button > img {
+    width: 10vw;
+    height: 10vw;
+}
+
+.track-name {
+    display: flex;
+    flex-direction: column;
+    gap: 1vh;
+}
+
+.track-name > p {
+    margin: 0;
+    align-self: flex-start;
+}
+
+.remove-track {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+}
+
+.artist-name {
+    color: #D3D3D3;
+    text-align: left;
+}
+
+.subtract-icon {
+    width: 7vw;
+    filter: brightness(0) saturate(100%) invert(23%) sepia(96%) saturate(7486%) hue-rotate(1deg) brightness(92%) contrast(126%);
+}
+
+.save-btn {
+    width: 20vw;
+    height: 5vh;
+    background-color: green;
+    border: none;
+    font-family: "Tiny5", serif;
+    border-radius: 10px;
+    margin-top: 2vh;
+}
+
+.bottom-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

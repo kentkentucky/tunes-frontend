@@ -1,0 +1,118 @@
+.playlist {
+    z-index: 1;
+}
+
+.collection {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.collection-img {
+    padding: 5vw;
+    width: 50vw;
+    height: 50vw;
+}
+
+.playlist-banner > h3 {
+    margin: 0 0 0 2vw;
+    align-self: flex-start;
+}
+
+.collection > p {
+    margin: 0 0 0 2vw;
+    align-self: flex-start;
+    font-size: 0.7rem;
+}
+
+.action-bar {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    align-items: center;
+    margin: 1vh 0 0 2vw;
+    gap: 2vw;
+}
+
+.action-bar > button > img {
+    width: 5vw;
+    filter: brightness(0) invert(1);
+}
+
+.playlist-tracks {
+    align-self: flex-start;
+    list-style: none;
+    padding: 0;
+    width: 100%;
+    margin: 2vh 0 0 0;
+}
+
+.track-img {
+    width: 12vw;
+    padding: 0.5vw;
+}
+
+.playlist-track-meta {
+    padding: 0;
+    background: none;
+    gap: 1vh;
+}
+
+.playlist-track-meta > p {
+    font-size: 0.7rem;
+    text-align: left;
+    margin: 0;
+}
+
+.artist-name {
+    color: #D3D3D3;
+    text-align: left;
+}
+
+#empty-playlist {
+    margin-top: 2vh;
+    color: #41FF00;
+}
+
+.playlist-banner {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.playlist-banner > button > img {
+    width: 5vw;
+    filter: brightness(0) invert(1);
+}
+
+.back-btn {
+    width: 8vw;
+    height: 8vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    position: absolute;
+    top: 2vh;
+    left: 1vw;
+    background: none;
+}
+
+.bin-btn {
+    justify-content: center;
+    align-items: center;
+    border: none;
+    position: absolute;
+    top: 2vh;
+    right: 1vw;
+    background: none;
+}
+
+.bin-icon {
+    width: 8vw;
+    height: 8vw;
+    filter: brightness(0) saturate(100%) invert(23%) sepia(96%) saturate(7486%) hue-rotate(1deg) brightness(92%) contrast(126%);
+}

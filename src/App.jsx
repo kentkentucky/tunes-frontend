@@ -10,6 +10,8 @@ import Album from "./Album";
 import Artist from "./Artist";
 import OnlinePlaylist from "./OnlinePlaylist";
 import Auth from "./Auth";
+import AddPlaylist from "./AddPlaylist";
+import Playlist from "./Playlist";
 
 export const UserContext = createContext();
 export const TokenContext = createContext();
@@ -39,11 +41,13 @@ function App() {
               <Route path="/" element={<Auth />} />
               <Route path="/login" element={<Login />} />
               <Route path="/home" element={<Home />} />
+              <Route path="/playlist/create" element={<AddPlaylist />} />
+              <Route path="/playlist/:playlistID" element={<Playlist />} />
               <Route path="/search" element={<Search />} />
               <Route path="/album/:albumID" element={<Album />} />
               <Route path="/artist/:artistID" element={<Artist />} />
               <Route
-                path="/playlist/:playlistID"
+                path="/onlineplaylist/:playlistID"
                 element={<OnlinePlaylist />}
               />
             </Routes>
