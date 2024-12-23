@@ -9,12 +9,6 @@ function Player({ accessToken, trackUri }) {
   const trackContext = useContext(TrackContext);
   const [play, setPlay] = useState(false);
 
-  useEffect(() => {
-    if (trackContext.currentTrack) {
-      setPlay(true);
-    }
-  }, [trackContext.currentTrack]);
-
   if (!accessToken) return null;
 
   return (
@@ -24,9 +18,6 @@ function Player({ accessToken, trackUri }) {
         showSaveIcon
         play={true}
         uris={trackUri ? [trackUri] : []}
-        callback={(state) => {
-          if (!state.isPlaying) setPlay(false);
-        }}
         styles={{
           bgColor: "#333",
           color: "#fff",

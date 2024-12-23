@@ -25,7 +25,6 @@ function Home() {
   useEffect(() => {
     getRecents();
     getPlaylists();
-    trackContext.setCurrentTrack();
   }, []);
 
   const getRecents = async () => {

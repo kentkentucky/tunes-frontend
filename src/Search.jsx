@@ -27,7 +27,6 @@ function Search() {
 
   useEffect(() => {
     getSearches();
-    trackContext.setCurrentTrack();
   }, []);
 
   const getSearches = async () => {
@@ -134,16 +133,18 @@ function Search() {
 
   return (
     <>
-      <form className="search-input" onSubmit={(e) => handleSubmit(e)}>
-        <input
-          type="text"
-          onChange={handleSearch}
-          placeholder=" 🔍  What do you want to listen to?"
-        ></input>
+      <div className="search-function">
+        <form className="search-input" onSubmit={(e) => handleSubmit(e)}>
+          <input
+            type="text"
+            onChange={handleSearch}
+            placeholder=" 🔍  What do you want to listen to?"
+          ></input>
+        </form>
         <button className="cancel-word-btn" onClick={(e) => handleCancel(e)}>
           Cancel
         </button>
-      </form>
+      </div>
       {!result && (
         <div className="recent-search">
           <h2>Recent Searches</h2>

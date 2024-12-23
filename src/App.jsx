@@ -22,6 +22,8 @@ function App() {
   const [accessToken, setAccessToken] = useState("");
   const [queue, setQueue] = useState([]);
   const [currentTrack, setCurrentTrack] = useState([]);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [currentPosition, setCurrentPosition] = useState(0);
 
   return (
     <UserContext.Provider value={{ user: user, setUser: setUser }}>
@@ -34,6 +36,10 @@ function App() {
             setQueue: setQueue,
             currentTrack: currentTrack,
             setCurrentTrack: setCurrentTrack,
+            isPlaying: isPlaying,
+            setIsPlaying: setIsPlaying,
+            currentPosition: currentPosition,
+            setCurrentPosition: setCurrentPosition,
           }}
         >
           <BrowserRouter>

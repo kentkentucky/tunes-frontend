@@ -1,3 +1,9 @@
+.search-function {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
 .search-input {
     display: flex;
     flex-direction: row;

@@ -23,7 +23,6 @@ function Album() {
 
   useEffect(() => {
     getAlbum();
-    trackContext.setCurrentTrack();
   }, [albumID]);
 
   const getAlbum = async () => {

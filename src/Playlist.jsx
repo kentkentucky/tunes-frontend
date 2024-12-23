@@ -85,6 +85,11 @@ function Playlist() {
     }
   };
 
+  const handlePlay = (e, track) => {
+    e.preventDefault();
+    trackContext.setCurrentTrack(track);
+  };
+
   return (
     <div className="playlist">
       <AddContext.Provider value={{ setAddMode: setAddMode }}>
@@ -130,7 +135,10 @@ function Playlist() {
           <ul className="playlist-tracks">
             {playlist.tracks.map((track) => (
               <li key={track.id}>
-                <button className="track-container">
+                <button
+                  className="track-container"
+                  onClick={(e) => handlePlay(e, track)}
+                >
                   <img src={track.album.images[0].url} className="track-img" />
                   <div className="playlist-track-meta">
                     <p>{track.name}</p>

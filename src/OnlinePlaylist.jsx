@@ -22,7 +22,6 @@ function OnlinePlaylist() {
   useEffect(
     () => {
       getPlaylist();
-      trackContext.setCurrentTrack();
     },
     [playlistID],
     []
